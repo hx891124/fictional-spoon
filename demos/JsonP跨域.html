@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JsonP跨域</title>
+  </head>
+  <body>
+    <script>
+      window.onload = function() {
+        function addScript(url) {
+          let script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = url;
+          script.setAttribute('data-type', 'jsonp');
+          document.documentElement.querySelector('head').appendChild(script);
+        }
+
+        //定义回调
+        function callBack(data) {
+          console.log(data);
+          document
+            .querySelector('head')
+            .removeChild(document.querySelector('script[data-type=jsonp]'));
+        }
+
+        addScript('www.baidu.com');
+
+        setTimeout(() => {
+          callBack();
+        }, 3000);
+      };
+    </script>
+  </body>
+</html>

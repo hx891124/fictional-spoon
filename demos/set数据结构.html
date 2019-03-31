@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button class="add">添加</button>
+    <button class="delTarget">删除指定条数据</button>
+    <button class="del">清空</button>
+    <input class="input" type="text" />
+    <ul class="target"></ul>
+    <script>
+      window.onload = function() {
+        let set = new Set();
+        let input = document.querySelector('.input');
+        let target = document.querySelector('.target');
+        let addBtn = document.querySelector('.add');
+        let delTarget = document.querySelector('.delTarget');
+        let del = document.querySelector('.del');
+
+        addBtn.addEventListener(
+          'click',
+          () => {
+            add();
+          },
+          false
+        );
+
+        delTarget.addEventListener(
+          'click',
+          () => {
+            delBySelect();
+          },
+          false
+        );
+
+        del.addEventListener(
+          'click',
+          () => {
+            clearAll();
+          },
+          false
+        );
+
+        function add() {
+          let val = input.value;
+          if (val == '') return;
+          set.add(val);
+          render();
+          clearInput();
+        }
+
+        function delBySelect() {
+          let val = input.value;
+          if (set.has(val)) {
+            set.delete(val);
+          } else {
+            alert('您需要删除的字段不存在');
+          }
+          render();
+          clearInput();
+        }
+
+        function clearAll() {
+          set.clear();
+          render();
+        }
+
+        function clearInput() {
+          input.value = '';
+        }
+
+        function render() {
+          let list = [...set];
+          let fragment = document.createDocumentFragment();
+          list.forEach(item => {
+            let li = document.createElement('li');
+            li.innerHTML = item;
+            fragment.appendChild(li);
+          });
+          target.innerHTML = '';
+          target.appendChild(fragment);
+        }
+      };
+    </script>
+  </body>
+</html>
