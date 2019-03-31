@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>proxy</title>
+  </head>
+  <body>
+    <script>
+      window.onload = function() {
+        function propsCheck(target) {
+          return new Proxy(target, {
+            set: function(target, property, value) {
+              if (property == 'price') {
+                if (typeof value != 'number') {
+                  throw new TypeError('price is not a number');
+                } else if (value < 0) {
+                  throw new RangeError('price must be greater than zero');
+                }
+              } else if (property != 'name') {
+                throw new ReferenceError(`property ${property} is not valid`);
+              }
+              target[property] = value;
+            }
+          });
+        }
+
+        function Item() {
+          return propsCheck(this);
+        }
+
+        try {
+          let keyBoard = new Item();
+          keyBoard.name = 'apple';
+          keyBoard.type = 'red delicious';
+          keyBoard.price = 'three dollars';
+          keyBoard.price = -1.0;
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    </script>
+  </body>
+</html>
