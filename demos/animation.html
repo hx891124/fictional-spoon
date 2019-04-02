@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      button {
+        background-color: red;
+        transition: background-color 0.5s ease 1s, border-radius 0.8s ease 1.5s;
+      }
+
+      button:hover {
+        border-radius: 10px;
+        background-color: yellow;
+      }
+
+      .ball {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: green;
+        animation: move 1s 0.1s infinite linear;
+        position: absolute;
+        left: 0;
+        top: 50px;
+      }
+
+      @keyframes move {
+        25% {
+          left: 100px;
+          top: 50px;
+        }
+
+        50% {
+          left: 100px;
+          top: 150px;
+        }
+
+        75% {
+          left: 0;
+          top: 150px;
+        }
+
+        100% {
+          left: 0;
+          top: 50px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button>按钮</button>
+    <div class="ball"></div>
+  </body>
+</html>
