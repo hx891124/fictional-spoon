@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>concepts</title>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <b>1:调用堆栈</b
+        ><span
+          >每调用一个函数,解析器就会把该函数添加到函数调用栈并开始执行；
+          正在调用栈中执行的函数还调用了其他函数，那么新函数也将会被添加到调用栈，一旦这个函数被调用，便会立即执行；
+          当函数执行完毕后，解释器将其请出调用栈，继续执行当前执行环境下的剩余的代码；
+          当分配的调用栈控件被沾满时，会发生堆栈溢出
+        </span>
+      </li>
+      <li>
+        <b>2:原始类型数据</b
+        ><span>
+          在执行函数体内语句之前，js会将传递进来的参数(基本类型的值)复制一份，创建一个本地副本。这个副本只存在于该函数的作用域中，我们能够通过制定在函数中的标识符访问到它。
+        </span>
+      </li>
+      <li>
+        <b>3:值传递和引用传递</b
+        ><span>
+          如果一个基本的数据类型绑定到某个变量，我们可以认为该变量包含这个基本数据类型的值
+          当我们使用=将这些变量赋值到另外的变量，实际上是将对应的值拷贝了一份，然后赋值给新的变量。我们把它称作值传递。
+          如果一个变量绑定到一个非基本数据类型(Array, Function,
+          Object)，那么它只记录了一个内存地址，该地址存放了具体的数据。注意之前提到指向基本数据类型的变量相当于包含了数据，而现在指向非基本数据类型的变量本身是不包含数据的。
+          对象是通过引用传递，而不是值传递。也就是说，变量赋值只会将地址传递过去。
+          如果我们将一个已经赋值的变量重新赋值，那么它将包含新的数据或则引用地址。
+        </span>
+      </li>
+      <li><b></b><span></span></li>
+      <li><b></b><span></span></li>
+      <li><b></b><span></span></li>
+      <li><b></b><span></span></li>
+      <li><b></b><span></span></li>
+      <li><b></b><span></span></li>
+      <li><b></b><span></span></li>
+      <li><b></b><span></span></li>
+      <li><b></b><span></span></li>
+      <li><b></b><span></span></li>
+      <li><b></b><span></span></li>
+      <li><b></b><span></span></li>
+      <li><b></b><span></span></li>
+      <li><b></b><span></span></li>
+      <li><b></b><span></span></li>
+      <li><b></b><span></span></li>
+      <li><b></b><span></span></li>
+    </ul>
+  </body>
+</html>
