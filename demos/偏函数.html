@@ -9,6 +9,7 @@
   <body>
     <script>
       window.onload = function() {
+        // 偏函数会固定其中一个或多个参数  多次执行时会自动带上固定参数
         function add(a, b) {
           return a + b;
         }
@@ -28,6 +29,19 @@
         console.log(myPartial(6));
         console.log(myPartial(7));
         console.log(myPartial(8));
+
+        //高级函数柯里化  参数会一直保存 只到满足条件才会执行目标函数
+        function curry(fn) {
+          return function curried(...args) {
+            if (args.length >= fn.length) {
+              return fn.apply(this, args);
+            } else {
+              return function(...args2) {
+                return curried.apply(this, args.concat(args2));
+              };
+            }
+          };
+        }
       };
     </script>
   </body>
