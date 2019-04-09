@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <span class="target">1</span>
+    <script>
+      window.onload = function() {
+        let target = document.querySelector(".target")
+        let count = 0;
+        document.body.addEventListener("click",debounce(()=>{
+          console.log(123);
+          target.innerHTML = count++ ;
+        },1000),false)
+
+        function debounce(fn,await) {
+          let timer = null;
+          return function(){
+            let context = this
+            if(timer)  clearTimeout(timer)
+              timer = setTimeout(()=>{
+                fn.apply(context,arguments)
+              },await)
+          }
+        }
+
+        function throttle(fn,await){
+          let timer = null;
+          return function(){
+            let context = this;
+            if(timer){
+              clearTimeout(timer)
+            }
+
+            let callNow = !timer
+
+           timer =  setTimeout(()=>{
+              timer = null
+            },await)
+
+            if(callNow){
+              fn.apply(context,arguments)
+            }
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
